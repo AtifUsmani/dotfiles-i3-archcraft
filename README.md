@@ -1,6 +1,73 @@
 # Installation
 ---
+
+# Clone the repository
+```bash
+git clone https://github.com/AtifUsmani/dotfiles-i3-archcraft.git
+cd dotfiles-i3-archcraft
 ```
-paru -S python-pywal i3-gaps archcraft-i3wm ncdu visual-studio-code-bin parsec-bin freedownloadmanager nerd-fonts-jetbrains-mono python-pywalfox
+
+## Building paru from source
+```bash
+sudo pacman -Sy archlinux-keyring
+sudo pacman -S --needed base-devel
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
 ```
+
+```bash
+cd ..
+rm -rf paru
+paru -Syyu
+```
+
+```
+paru -S python-pywal i3-gaps archcraft-i3wm ncdu visual-studio-code-bin parsec-bin freedownloadmanager nerd-fonts-jetbrains-mono python-pywalfox nautilus docker auto-cpufreq-git neofetch
+```
+
+### Enable services
+```bash
+sudo systemctl enable --now auto-cpufreq 
+sudo systemctl enable --now docker
+```
+
+### Make Docker work without administrative privileges
+```bash
+sudo groupadd docker
+sudo usermod -aG docker $USER
+```
+
 ## Then copy all the files to the home folder
+# Install oh-my-zsh
+```bash
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+---
+
+# Install Plugins
+
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+```
+
+## Edit .zshrc file
+
+### Add the following line to your .zshrc file
+
+```
+plugins=( 
+    zsh-autosuggestions
+)
+
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+```
+
+```bash
+source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+```
+
+# Then Reboot
