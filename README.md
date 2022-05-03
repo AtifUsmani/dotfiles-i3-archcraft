@@ -28,22 +28,34 @@ paru -S python-pywal i3-gaps archcraft-i3wm ncdu visual-studio-code-bin parsec-b
 
 ### Enable services
 ```bash
+sudo auto-cpufreq --install
 sudo systemctl enable --now auto-cpufreq 
 sudo systemctl enable --now docker
 ```
-
+### Edit grub configuration
+Edit /etc/default/grub
+```bash
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash intel_pstate=disable"
+```
+### Regenerate grub configuration
+```bash
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
 ### Make Docker work without administrative privileges
 ```bash
 sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
-
-## Then copy all the files to the home folder
 # Install oh-my-zsh
 ```bash
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 ---
+
+### Move Configuration file for power saving
+```bash
+sudo mv -f auto-cpufreq.conf /etc/
+```
 
 # Install Plugins
 
@@ -69,5 +81,5 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 ```bash
 source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ```
-
+## Then copy the files from the repository
 # Then Reboot
