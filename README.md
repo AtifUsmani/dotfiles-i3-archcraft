@@ -1,5 +1,5 @@
-# Installation
----
+# Installation files for my Linux customizations
+## These files are made to work on my machine(**Asus UX430UAR**) so there is **NO** guarantee that they will work on all machines
 
 # Clone the repository
 ```bash
