@@ -23,7 +23,7 @@ paru -Syyu
 ```
 
 ```
-paru -S python-pywal i3-gaps archcraft-i3wm ncdu visual-studio-code-bin parsec-bin freedownloadmanager nerd-fonts-jetbrains-mono python-pywalfox nautilus docker auto-cpufreq-git neofetch
+paru -S python-pywal i3-gaps archcraft-i3wm ncdu visual-studio-code-bin parsec-bin freedownloadmanager nerd-fonts-jetbrains-mono python-pywalfox nautilus docker auto-cpufreq-git neofetch polybar rofi dunst picom-ibhagwan-git
 ```
 
 ### Enable services
